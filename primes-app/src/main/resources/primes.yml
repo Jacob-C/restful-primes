@@ -1,0 +1,4 @@
+# Upper bounds to use for primes calculation if not supplied
+defaultBounds: 1000
+
+defaultAlgorithm: sundaram
