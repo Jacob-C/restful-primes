@@ -7,9 +7,9 @@ import java.util.BitSet;
 import java.util.List;
 
 /**
- * Calculates primes using the Seive of Eratosthenes algorithm
+ * Calculates primes using the Sieve of Eratosthenes algorithm
  */
-public class EratosthenesSeive implements PrimeSupplier {
+public class EratosthenesSieve implements PrimeSupplier {
 
     @Override
     public List<Integer> primesUpTo(final int upperBound) throws CalculationException {
@@ -18,7 +18,7 @@ public class EratosthenesSeive implements PrimeSupplier {
             throw new IllegalArgumentException("There are no primes below 2");
         }
 
-        // The Seive of Eratosthenes is very space inefficient.  Using a bitset
+        // The Sieve of Eratosthenes is very space inefficient.  Using a bitset
         // allows us to use ~1 bit per candidate number instead of 32 bits.
         // For large numbers this can be the difference between an
         // OutOfMemoryEcxeption and a successful result.

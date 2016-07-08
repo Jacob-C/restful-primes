@@ -6,10 +6,10 @@ import java.util.Map;
 import com.example.prime.api.MetadataResults;
 import com.example.prime.application.resources.MetadataResource;
 import com.example.prime.application.resources.PrimesResource;
-import com.example.prime.core.EratosthenesSeive;
+import com.example.prime.core.EratosthenesSieve;
 import com.example.prime.core.ErrorGeneratingPrimeSupplier;
 import com.example.prime.core.PrimeSupplier;
-import com.example.prime.core.SundaramSeive;
+import com.example.prime.core.SundaramSieve;
 
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
@@ -35,8 +35,8 @@ public class PrimesApplication extends Application<PrimesConfiguration> {
 
         // Install the primes resource
         final Map<String, PrimeSupplier> algorithms = new HashMap<>();
-        algorithms.put("sundaram", new SundaramSeive());
-        algorithms.put("eratosthenes", new EratosthenesSeive());
+        algorithms.put("sundaram", new SundaramSieve());
+        algorithms.put("eratosthenes", new EratosthenesSieve());
         algorithms.put("error", new ErrorGeneratingPrimeSupplier());
         
         final PrimesResource primesResource = 

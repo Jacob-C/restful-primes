@@ -7,9 +7,9 @@ import java.util.BitSet;
 import java.util.List;
 
 /**
- * Calculates primes using the Seive of Sundaram algorithm
+ * Calculates primes using the Sieve of Sundaram algorithm
  */
-public class SundaramSeive implements PrimeSupplier {
+public class SundaramSieve implements PrimeSupplier {
 
     @Override
     public List<Integer> primesUpTo(final int upperBound) throws CalculationException {

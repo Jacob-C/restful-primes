@@ -39,8 +39,8 @@ public class PrimeSupplierTest {
     @Parameters(name = "{0}")
     public static Iterable<Object[]> parameters() {
         return asList(
-                    testCase(new EratosthenesSeive()),
-                    testCase(new SundaramSeive()));
+                    testCase(new EratosthenesSieve()),
+                    testCase(new SundaramSieve()));
     }
 
     /**

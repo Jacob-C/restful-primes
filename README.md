@@ -40,10 +40,10 @@ E.g. `{"primes":{"parameters":{"upto":"[2,INT_MAX]","algorithm":["sundaram","era
 2. Listing primes specifying an upper bound
    `GET /primes?upto=100 HTTP/1.1`
    `{"primes":[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]}`
-3. Generating primes using the Seive of Eratosthenes
+3. Generating primes using the Sieve of Eratosthenes
    `GET /primes?upto=100&algorithm=eratosthenes HTTP/1.1`
    `{"primes":[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]}`
-4. Generating primes using the Seive of Sundaram
+4. Generating primes using the Sieve of Sundaram
    `GET /primes?upto=100&algorithm=sundaram HTTP/1.1`
    `{"primes":[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97]}`
 5. Generating primes using a non-existant algorithm
@@ -58,7 +58,7 @@ E.g. `{"primes":{"parameters":{"upto":"[2,INT_MAX]","algorithm":["sundaram","era
 
 
 ## Todo
-1. Multi-threaded prime seive implementation
+1. Multi-threaded prime sieve implementation
 2. Improved application launcher  
 3. Automated HTTP tests of the client
-4. Caching seive implementation
+4. Caching sieve implementation
