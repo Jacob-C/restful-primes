@@ -7,6 +7,7 @@ import com.example.prime.api.MetadataResults;
 import com.example.prime.application.resources.MetadataResource;
 import com.example.prime.application.resources.PrimesResource;
 import com.example.prime.core.EratosthenesSeive;
+import com.example.prime.core.ErrorGeneratingPrimeSupplier;
 import com.example.prime.core.PrimeSupplier;
 import com.example.prime.core.SundaramSeive;
 
@@ -36,6 +37,7 @@ public class PrimesApplication extends Application<PrimesConfiguration> {
         final Map<String, PrimeSupplier> algorithms = new HashMap<>();
         algorithms.put("sundaram", new SundaramSeive());
         algorithms.put("eratosthenes", new EratosthenesSeive());
+        algorithms.put("error", new ErrorGeneratingPrimeSupplier());
         
         final PrimesResource primesResource = 
                 new PrimesResource(
