@@ -1,11 +1,15 @@
 package com.example.prime.application;
 
+import static java.lang.Runtime.getRuntime;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
 
 import com.example.prime.api.MetadataResults;
 import com.example.prime.application.resources.MetadataResource;
 import com.example.prime.application.resources.PrimesResource;
+import com.example.prime.core.SegmentedSieve;
 import com.example.prime.core.EratosthenesSieve;
 import com.example.prime.core.ErrorGeneratingPrimeSupplier;
 import com.example.prime.core.PrimeSupplier;
@@ -33,10 +37,16 @@ public class PrimesApplication extends Application<PrimesConfiguration> {
             final PrimesConfiguration configuration, 
             final Environment environment) throws Exception {
 
+        final ExecutorService executorService = 
+                environment.lifecycle().executorService("SegmentedSieve-worker")
+                                       .maxThreads(getRuntime().availableProcessors())
+                                       .build();
+        
         // Install the primes resource
         final Map<String, PrimeSupplier> algorithms = new HashMap<>();
         algorithms.put("sundaram", new SundaramSieve());
         algorithms.put("eratosthenes", new EratosthenesSieve());
+        algorithms.put("segmented", new SegmentedSieve(executorService));
         algorithms.put("error", new ErrorGeneratingPrimeSupplier());
         
         final PrimesResource primesResource = 

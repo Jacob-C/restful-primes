@@ -30,7 +30,7 @@ public class EratosthenesSieve implements PrimeSupplier {
         // Values below 2 are not primes
         candidates.set(2, upperBound + 1);
 
-        for ( int multiplier = 2; multiplier <= Math.sqrt(upperBound); multiplier++ ) {
+        for ( int multiplier = 2; multiplier * multiplier <= upperBound; multiplier++ ) {
             for ( int i = 2; multiplier * i <= upperBound; i++ ) {
                 candidates.clear(multiplier*i);
             }

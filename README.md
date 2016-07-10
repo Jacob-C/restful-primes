@@ -25,13 +25,13 @@ It supports two parameters
 1. `upto` The maximum value that may appear in the list. Defaults to 1000.
    Valid range is 2 >= x >= Integer.MAX_VALUE
 2. `algorithm` The method used to generate the list of primes.  Valid values
-   are `eratosthenes`, `sundaram` and `error`
+   are `eratosthenes`, `sundaram`, `segmented` and `error`
 
 **Metadata**
 
 Requesting the resource at '/' (e.g. `http://localhost:8080/`) provides a 
 JSON document describing the resource at '/primes'.
-E.g. `{"primes":{"parameters":{"upto":"[2,INT_MAX]","algorithm":["sundaram","eratosthenes","error"]}}}`
+E.g. `{"primes":{"parameters":{"upto":"[2,INT_MAX]","algorithm":["sundaram","eratosthenes","segmented","error"]}}}`
 
 ## Examples
 1. Listing primes using all the default parameters
@@ -58,7 +58,6 @@ E.g. `{"primes":{"parameters":{"upto":"[2,INT_MAX]","algorithm":["sundaram","era
 
 
 ## Todo
-1. Multi-threaded prime sieve implementation
-2. Improved application launcher  
-3. Automated HTTP tests of the client
-4. Caching sieve implementation
+1. Improved application launcher  
+2. Automated HTTP tests of the client
+3. Caching sieve implementation

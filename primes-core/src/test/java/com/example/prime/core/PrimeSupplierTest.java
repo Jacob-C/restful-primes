@@ -5,10 +5,13 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
 import java.util.Collection;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeDiagnosingMatcher;
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -25,6 +28,9 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class PrimeSupplierTest {
 
+    private static final ExecutorService executor =
+            Executors.newSingleThreadExecutor();
+
     // pre-calculated list of small primes
     private final static int[] SMALL_PRIMES =
         { 2 ,3 ,5 ,7 ,11 ,13 ,17 , 19 , 23 , 29, 31, 37, 41, 43, 47 };
@@ -34,13 +40,24 @@ public class PrimeSupplierTest {
     public PrimeSupplier source;
 
     /**
-     *
+     * Provides parameters for each test case
      */
     @Parameters(name = "{0}")
     public static Iterable<Object[]> parameters() {
         return asList(
                     testCase(new EratosthenesSieve()),
+                    testCase(new SegmentedSieve(executor)),
                     testCase(new SundaramSieve()));
+    }
+
+
+    /**
+     * Stop the executor service once testing is finished to prevent it from
+     * keeping the process alive for too long.
+     */
+    @AfterClass
+    public static void shutDown() {
+        executor.shutdown();
     }
 
     /**
